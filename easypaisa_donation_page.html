@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ur" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#087f5b">
+<title>میری ڈونیشن ویب سائٹ</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f2f8f4;color:#19352a;font-family:system-ui,-apple-system,"Noto Sans Arabic",sans-serif;line-height:1.8}
+main{max-width:520px;margin:auto;padding:24px 16px 40px}.hero{text-align:center;padding:25px 12px}.heart{font-size:42px;background:#d9f5e5;border-radius:22px;width:82px;height:82px;display:grid;place-items:center;margin:0 auto 12px}h1{font-size:28px;margin:4px 0}p{margin:8px 0}.muted{color:#60746a;font-size:14px}.card{background:white;border:1px solid #dce9e0;border-radius:20px;padding:20px;margin:14px 0;box-shadow:0 8px 24px #173b2b0a}h2{font-size:20px;margin:0 0 8px}.number{direction:ltr;text-align:center;font-size:22px;font-weight:750;letter-spacing:.5px;background:#effaf3;border:1px dashed #83c79d;border-radius:12px;padding:12px;margin:14px 0;overflow-wrap:anywhere}.btn{display:block;width:100%;padding:13px;border:0;border-radius:12px;background:#087f5b;color:#fff;font-size:17px;font-weight:700;cursor:pointer;font-family:inherit;text-align:center;text-decoration:none}.btn.secondary{background:#e8f5ed;color:#155b3d;border:1px solid #cde7d5;margin-top:9px}.steps{padding-right:22px}.steps li{margin:7px 0}.note{background:#fff8e7;border:1px solid #f0dfae;border-radius:12px;padding:12px;font-size:13px;color:#705a20}.footer{text-align:center;color:#6b7d73;font-size:12px;padding:12px}
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div class="heart">💚</div>
+<h1>میری مدد کریں</h1>
+<p>اگر آپ میرا ساتھ دینا چاہتے ہیں تو اپنی خوشی سے ڈونیٹ کر سکتے ہیں۔ آپ کی مدد میرے لیے بہت قیمتی ہے۔</p>
+</header>
+<section class="card">
+<h2>💸 Easypaisa کے ذریعے ڈونیٹ کریں</h2>
+<p class="muted">نیچے دیے گئے نمبر پر اپنی Easypaisa ایپ سے رقم بھیجیں۔ بھیجنے سے پہلے نام اور نمبر اپنی ایپ میں ضرور چیک کریں۔</p>
+<div class="number" id="epNumber">اپنا Easypaisa نمبر یہاں درج کریں</div>
+<button class="btn" id="copyBtn" type="button">Easypaisa نمبر کاپی کریں</button>
+<a class="btn secondary" href="https://easypaisa.com.pk/" target="_blank" rel="noopener noreferrer">Easypaisa کھولیں</a>
+<p id="feedback" class="muted" aria-live="polite"></p>
+</section>
+<section class="card">
+<h2>ادائیگی کیسے کریں؟</h2>
+<ol class="steps">
+<li>Easypaisa ایپ کھولیں۔</li>
+<li>رقم بھیجنے یا موبائل اکاؤنٹ ٹرانسفر کا اختیار منتخب کریں۔</li>
+<li>اوپر دیا گیا نمبر درج کریں اور وصول کنندہ کا نام چیک کریں۔</li>
+<li>اپنی مرضی کی رقم بھیجیں۔</li>
+</ol>
+<p class="note">یہ ڈونیشن صفحے کا نمونہ ہے؛ یہ خود رقم وصول یا ادائیگی کی تصدیق نہیں کرتا۔ شائع کرنے سے پہلے اپنا درست Easypaisa نمبر درج کریں۔ اپنا PIN یا OTP کسی کے ساتھ شیئر نہ کریں۔</p>
+</section>
+<footer class="footer">آپ کے تعاون کا شکریہ ❤️</footer>
+</main>
+<script>
+const numberEl=document.getElementById('epNumber');
+document.getElementById('copyBtn').addEventListener('click',async()=>{
+ const value=numberEl.textContent.trim();
+ if(value==='اپنا Easypaisa نمبر یہاں درج کریں'){
+  document.getElementById('feedback').textContent='پہلے ویب سائٹ میں اپنا اصل Easypaisa نمبر شامل کرنا ضروری ہے۔';
+  return;
+ }
+ try{await navigator.clipboard.writeText(value);document.getElementById('feedback').textContent='نمبر کاپی ہوگیا۔ بھیجنے سے پہلے ایپ میں تصدیق کریں۔'}
+ catch(e){document.getElementById('feedback').textContent='نمبر کو دباکر منتخب کریں اور کاپی کریں۔'}
+});
+</script>
+</body>
+</html>
